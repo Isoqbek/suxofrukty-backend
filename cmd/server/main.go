@@ -58,6 +58,7 @@ func main() {
 	adminOrderH := handler.NewAdminOrderHandler(db)
 	adminCategoryH := handler.NewAdminCategoryHandler(db)
 	adminCouponH := handler.NewAdminCouponHandler(db)
+	uploadH := handler.NewUploadHandler()
 
 	r := gin.Default()
 	r.Use(middleware.CORS())
@@ -96,6 +97,8 @@ func main() {
 			protected.GET("/coupons/", adminCouponH.List)
 			protected.POST("/coupons/", adminCouponH.Create)
 			protected.PATCH("/coupons/:id/toggle", adminCouponH.Toggle)
+
+			protected.POST("/upload", uploadH.Upload)
 		}
 	}
 
