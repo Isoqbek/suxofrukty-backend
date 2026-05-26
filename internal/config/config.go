@@ -34,9 +34,14 @@ func Load() (*Config, error) {
 	viper.SetDefault("SERVER_PORT", "8080")
 	viper.AutomaticEnv()
 
+	port := viper.GetString("PORT")
+	if port == "" {
+		port = viper.GetString("SERVER_PORT")
+	}
+
 	return &Config{
 		Server: ServerConfig{
-			Port: viper.GetString("SERVER_PORT"),
+			Port: port,
 		},
 		Database: DatabaseConfig{
 			DSN: viper.GetString("DATABASE_DSN"),
