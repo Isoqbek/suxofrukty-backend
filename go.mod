@@ -1,6 +1,6 @@
 module github.com/Isoqbek/suxofrukty-backend
 
-go 1.26.2
+go 1.24.0
 
 require (
 	github.com/bytedance/gopkg v0.1.3 // indirect
